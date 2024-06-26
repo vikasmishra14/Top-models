@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#container {
+  background-color: #fffacd;
+  position: relative;
+
+  height: 100vh;
+}
+#container h1 {
+  font-size: 40px;
+  text-align: center;
+  font-family: Verdana, Geneva, tahoma, sans-serif;
+  padding: 10px;
+}
+#container .imageSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+#container .imageSection img {
+  height: 300px;
+  width: 380px;
+  border: 10px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.2s linear;
+}
+#container .imageSection img:hover {
+  transform: scale(1.1);
+}
+#newImg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  overflow: auto;
+  text-align: center;
+  color: white;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer; 
+}
+
+.close:hover {
+  color: #ccc;
+}
+</style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>Top Models</h1>
+        <div class="imageSection">
+
+            <img
+                src="https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+
+
+            <img
+                src="https://images.pexels.com/photos/13985706/pexels-photo-13985706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+
+            <img
+                src="https://images.pexels.com/photos/3051604/pexels-photo-3051604.jpeg?auto=compress&cs=tinysrgb&w=1260…">
+                </div>
+            </div>
+      
+    
+        <div id="newImg">
+            
+        </div>
+    </body>
+    <script>
+        let img = document.querySelectorAll("img");
+        let newImg = document.getElementById("newImg");
+        let container = document.getElementById("container")
+       
+        for (let i = 0; i < img.length; i++) {
+            img[i].addEventListener("click", () => {
+                {
+    
+                    newImg.innerHTML = "";
+                    newImg.style.display = "block";
+                    newImg.innerHTML = "<span class='close'>&times;</span>"; 
+                    let insertedImg = document.createElement("img");
+                    insertedImg.src = img[i].src;
+                    insertedImg.style.position = "relative";
+                    insertedImg.style.top = "30%";
+    
+                    insertedImg.style.width = "300px";
+                    insertedImg.style.height = "300px";
+                    insertedImg.style.objectFit = "cover";
+                    insertedImg.style.borderRadius = "5px";
+                    newImg.appendChild(insertedImg);
+    
+                    closeButton = document.querySelector(".close");
+            closeButton.addEventListener("click", () => {
+                newImg.style.display = "none";
+            });
+    
+                }
+    
+            })
+    
+        }  
+    
+    
+    </script>
+    
+    </html>
